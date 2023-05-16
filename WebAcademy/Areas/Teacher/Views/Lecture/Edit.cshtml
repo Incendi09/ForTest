@@ -1,0 +1,38 @@
+﻿@model Lecture
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="=" row pb-2">
+            <h2 class="text-primary">Edit Lecture</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="LectureName"></label>
+            <input asp-for="LectureName" class="form-control" />
+            <span asp-validation-for="LectureName" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="LectureContext"></label>
+            <input asp-for="LectureContext" class="form-control" />
+            <span asp-validation-for="LectureContext" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LectureImageUrl"></label>
+            <input asp-for="LectureImageUrl" class="form-control" />
+            <span asp-validation-for="LectureImageUrl" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Lecture" asp-action="Index" class="btn btn-outline-primary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

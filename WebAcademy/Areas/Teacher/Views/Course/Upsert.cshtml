@@ -1,0 +1,69 @@
+﻿@model Academy.Models.ViewModels.CourseVM
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <div class="border p-3 mt-4 row">
+        <div class="=" row pb-2">
+            <h2 class="text-primary">@(
+                Model.Course.Id != 0 ? "Update" : "Create"
+                ) Course</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="Course.CourseName"></label>
+            <input asp-for="Course.CourseName" class="form-control" />
+            <span asp-validation-for="Course.CourseName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Course.Semester"></label>
+            <input asp-for="Course.Semester" class="form-control" />
+            <span asp-validation-for="Course.Semester" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Course.CategoryId"></label>
+            <select asp-for="Course.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                <option disabled selected>--Select Category--</option>
+            </select>
+            <span asp-validation-for="Course.CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Course.ShortDescription"></label>
+            <textarea asp-for="Course.ShortDescription" rows="3" class="form-control"></textarea>
+            <span asp-validation-for="Course.ShortDescription" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Course.CourseImageUrl"></label>
+            <input type="file" id="uploadBox" name="file" class="form-control" />
+        </div>
+        @if (Model.Course.Id != 0)
+        {
+           <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        }else{
+           <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+        }
+        <a asp-controller="Course" asp-action="Index" class="btn btn-outline-primary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        function ValidateInput(){
+            if(document.getElementById("uploadBox").value==""){
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Please, upload an Image!'
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+}

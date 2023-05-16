@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Course List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Course" asp-action="Upsert" class="btn btn-success">
+                Create New Course &nbsp; <i class="bi bi-plus-circle"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Course Name
+                </th>
+                <th>
+                    Semester
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Course Image
+                </th>
+                <th>
+                   Update Date
+                </th>
+                @*<th>
+                    Category
+                </th>*@
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        @*<tbody>
+            @foreach (var obj in model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.coursename
+                    </td>
+                     <td width="50%">
+                        @obj.semester
+                    </td>
+                    <td width="30%">
+                        @obj.shortdescription
+                    </td>
+                    <td width="30%">
+                        @obj.courseimageurl
+                    </td>
+                    <td width="30%">
+                        @obj.updatedatetime
+                    </td>
+                    <td width="30%">
+                        @obj.category
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="course" asp-action="edit" asp-route-id="@obj.id" class="btn btn-warning mx-2">
+                                <i class="bi bi-pencil-square"></i> &nbsp; edit
+                            </a>
+
+                            <a asp-controller="course" asp-action="delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3-fill"></i> &nbsp; delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>*@
+    </table>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/course.js"></script>
+}
+

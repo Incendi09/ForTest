@@ -1,0 +1,43 @@
+﻿@model Course
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="=" row pb-2">
+            <h2 class="text-primary">Edit Course</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="CourseName"></label>
+            <input asp-for="CourseName" class="form-control" />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Semester"></label>
+            <input asp-for="Semester" class="form-control" />
+            <span asp-validation-for="Semester" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ShortDescription"></label>
+            <input asp-for="ShortDescription" class="form-control" />
+            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CourseImageUrl"></label>
+            <input asp-for="CourseImageUrl" class="form-control" />
+            <span asp-validation-for="CourseImageUrl" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Course" asp-action="Index" class="btn btn-outline-primary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
